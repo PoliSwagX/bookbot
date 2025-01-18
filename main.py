@@ -1,11 +1,9 @@
-# print("hello world")
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     num_words = wordcount(text)
     chars_dict = charactercount(text)
     chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
-    #chars_dict_to_sorted_list(chars_dict)
     
     print("--- Begin report of", book_path, "---")
     print(f"{num_words} words found in the document")
@@ -14,8 +12,6 @@ def main():
         print(f"The '{i['name']}' character was found {i['num']} times")
     print("--- End report ---")
 
-    
-    #print("Theser are the characters and numbers that are in the book.", chars_dict)
 
 def get_book_text(book_path):
     with open(book_path) as f:
