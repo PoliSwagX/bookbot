@@ -4,8 +4,12 @@ def main():
     text = get_book_text(book_path)
     num_words = wordcount(text)
     chars_dict = charactercount(text)
-    print(f"{num_words} words found in the document")
-    print(chars_dict)
+    chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
+    
+    chars_dict_to_sorted_list(chars_dict)
+
+    #print(f"{num_words} words found in the document")
+    #print("Theser are the characters and numbers that are in the book.", chars_dict)
 
 def get_book_text(book_path):
     with open(book_path) as f:
@@ -25,5 +29,12 @@ def charactercount(text):
             characters[low_characters] = 1
     return characters
 
+def sort_on(chars_dict):
+    return chars_dict["num"]
+
+def chars_dict_to_sorted_list(chars_dict):
+    x = None
+    for i in chars_dict:
+        print(f"The", i, "character was found", chars_dict[i], "times")
 
 main()
