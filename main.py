@@ -5,10 +5,16 @@ def main():
     num_words = wordcount(text)
     chars_dict = charactercount(text)
     chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
+    #chars_dict_to_sorted_list(chars_dict)
     
-    chars_dict_to_sorted_list(chars_dict)
+    print("--- Begin report of", book_path, "---")
+    print(f"{num_words} words found in the document")
+    print()
+    for i in chars_sorted_list:
+        print(f"The '{i['name']}' character was found {i['num']} times")
+    print("--- End report ---")
 
-    #print(f"{num_words} words found in the document")
+    
     #print("Theser are the characters and numbers that are in the book.", chars_dict)
 
 def get_book_text(book_path):
@@ -33,8 +39,11 @@ def sort_on(chars_dict):
     return chars_dict["num"]
 
 def chars_dict_to_sorted_list(chars_dict):
-    x = None
+    sorted_list = []
     for i in chars_dict:
-        print(f"The", i, "character was found", chars_dict[i], "times")
-
+        if i.isalpha():
+            char_dict = {"name": i, "num": chars_dict[i]}
+            sorted_list.append(char_dict)
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list
 main()
